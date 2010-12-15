@@ -43,6 +43,9 @@ set incsearch
 set showmatch
 set hlsearch
 
+"for vimwiki
+filetype plugin on
+
 "nnoremap / /\v
 "vnoremap / /\v
 
@@ -83,7 +86,6 @@ nnoremap <esc> :noh<return><esc>
 imap <C-BS> <C-W>
 imap <C-Del> <esc>Ea<C-W>
 
-noremap <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 if has("autocmd")
   "html tag jumping
