@@ -1,4 +1,4 @@
-cd ~\My\ Documents\notes\
+"cd ~\My\ Documents\notes\
 set gfn=DejaVu_Sans_Mono:h10
 colo vc
 
@@ -20,8 +20,8 @@ set columns=80
 "set statusline=%F%m%r%h%w\ \ --\ \ %{&ff}\ %Y\ \ --\ \ Ln\ %l\ \ Col\ %v\ \ --\ \ %p%%\ of| %L lines
 
 set clipboard=unnamed
-set backupdir=C:\\docume~1\\nknowl~1\\mydocu~1\\vim\\backup
-set directory=C:\\docume~1\\nknowl~1\\mydocu~1\\vim\\swap
+set backupdir=~\\vimfiles\\backup
+set directory=~\\vimfiles\\swap
 
 set nocompatible	" Use Vim defaults (much better!)
 set bs=2		" allow backspacing over everything in insert mode
