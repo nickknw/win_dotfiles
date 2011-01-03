@@ -1,4 +1,4 @@
-"cd ~\My\ Documents\notes\
+cd ~
 set gfn=DejaVu_Sans_Mono:h10
 colo vc
 
@@ -8,7 +8,6 @@ if has("gui_running")
     set guioptions-=l "remove left scrollbar
     set guioptions+=b
     "set nowrap
-
 endif
 
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
@@ -38,7 +37,6 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set incsearch
-set autochdir
 set incsearch
 set showmatch
 set hlsearch
@@ -49,11 +47,12 @@ filetype plugin on
 "nnoremap / /\v
 "vnoremap / /\v
 
-cab W w
 nmap <silent> <F10> ;NERDTreeToggle<CR>
-nmap ,cd :cd %:p:h<CR>
 noremap \e :FufFileWithCurrentBufferDir **/<CR>
 noremap \b :FufBuffer<CR>
+"
+"Change directory to the dir of the current buffer
+nmap ,cd :cd %:p:h<CR>  
 
 "Window switching
 noremap <c-h> <c-w>h
