@@ -64,7 +64,7 @@ set gfn=DejaVu_Sans_Mono:h10
 colo vc
 
 " preferred window size
-set lines=24
+set lines=25
 set columns=80
 
 " stop these files from being scattered all over
