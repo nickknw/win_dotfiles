@@ -5,3 +5,5 @@
 !_pentadactylrc
 !.gitignore
 !.gitconfig
+!.bashrc
+!.bash_aliases
