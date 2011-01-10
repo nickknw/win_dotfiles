@@ -1,4 +1,4 @@
-alias gvim="'C:/Program Files/Vim/vim72/gvim.exe'"
+alias gvim="'C:/Program Files/Vim/vim73/gvim.exe'"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
