@@ -137,6 +137,9 @@ nmap <silent> <F10> ;NERDTreeToggle<CR>
 noremap \e :FufFileWithCurrentBufferDir **/<CR>
 noremap \b :FufBuffer<CR>
 
+" http://stackoverflow.com/questions/4294116/problem-with-vims-ruby-plugin
+let g:ruby_path = ':C:\ruby192\bin'
+
 
 " Filetype-specific commands {{{1
 " --------------------------------
@@ -164,3 +167,4 @@ if has("autocmd")
   autocmd FocusGained * if !has('win32') | silent! call fugitive#reload_status() | endif
 endif
 " }}}2
+
