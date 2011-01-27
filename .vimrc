@@ -1,4 +1,4 @@
-" vim: foldlevel=1
+" vim: foldmethod=marker foldlevel=1 
 "
 " Basic Defaults {{{1
 " --------------------------------
@@ -55,13 +55,14 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 " More Personalized Settings {{{1
 " --------------------------------
 
-" share clipboard
+" share clipboard with Windows
 set clipboard=unnamed  
 
 " make sure I'm starting in my home dir, not Prog Files\Vim etc.
 cd ~  
+
 set gfn=DejaVu_Sans_Mono:h10
-colo vc
+colo vc " I usually use desert or this
 
 " preferred window size
 set lines=25
@@ -112,7 +113,7 @@ vmap <C-x>		"+d
 " Use CTRL-Q to do what CTRL-V used to do
 noremap <C-Q>		<C-V>
 
-"Window switching
+" Window switching
 noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
@@ -121,7 +122,7 @@ noremap <c-l> <c-w>l
 " gf is 'go to file', gnf is now 'go to file in new window'
 nnoremap gnf <c-w><c-f>
 
-"make editing a temp macro in register q more convenient
+" make editing a temp macro in register q more convenient
 noremap qp mqGo<Esc>"qp
 noremap qd G0"qd$`q
 
