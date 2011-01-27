@@ -6,19 +6,19 @@ if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=utf-8,latin1
 endif
 
-set nocompatible	" Use Vim defaults (much better!)
-set bs=2		" allow backspacing over everything in insert mode
-set viminfo='20,\"50	" read/write a .viminfo file, don't store more than 50 lines of registers
-set history=50		" keep 50 lines of command line history
-set showmode		" If in Insert, Replace or Visual mode put a message on the last line
-set nu			" show line numbers
-set display=lastline	" include as much of the last line as possible
-set wildmenu		" better command autocompletion
-set winaltkeys=no	" don't use alt keys for menus
+set nocompatible        " Use Vim defaults (much better!)
+set bs=2                " allow backspacing over everything in insert mode
+set viminfo='20,\"50    " read/write a .viminfo file, don't store more than 50 lines of registers
+set history=50          " keep 50 lines of command line history
+set showmode            " If in Insert, Replace or Visual mode put a message on the last line
+set nu                  " show line numbers
+set display=lastline    " include as much of the last line as possible
+set wildmenu            " better command autocompletion
+set winaltkeys=no       " don't use alt keys for menus
 set foldmethod=marker
 
 " recommended for maximum politeness
-set tabstop=8		
+set tabstop=8           
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -82,8 +82,8 @@ if has("gui_running")
 endif
 
 " statusline related
-set laststatus=2	"always show statusline
-set showcmd		"show partial commands below statusline
+set laststatus=2        "always show statusline
+set showcmd             "show partial commands below statusline
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*fugitive#statusline')?fugitive#statusline():''}%*%=%-16(\ %l,%c%V\ %)%P\ of\ %L
 
 
@@ -106,12 +106,12 @@ imap <C-Del> <esc>Ea<C-W>
 
 " Windows-like copy/cut/paste mappings
 " CTRL-V is Paste in insert mode
-imap <C-V>		"+gpa   
+imap <C-V>              "+gpa   
 " CTRL-C is Copy, CTRL-X is Cut, in visual mode
-vmap <C-C>		"+y
-vmap <C-x>		"+d
+vmap <C-C>              "+y
+vmap <C-x>              "+d
 " Use CTRL-Q to do what CTRL-V used to do
-noremap <C-Q>		<C-V>
+noremap <C-Q>           <C-V>
 
 " Window switching
 noremap <c-h> <c-w>h
