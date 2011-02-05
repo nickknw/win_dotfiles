@@ -30,3 +30,4 @@ noremap <C-S-M> :set go-=mT<CR>
 noremap <C-,> <C-F11>
 map , <Esc><Esc>;<Up><CR>
 
+set defsearch=g
