@@ -1,6 +1,6 @@
 " vim: foldmethod=marker foldlevel=1 
-"
-" Basic Defaults {{{1
+
+" Basic Defaults {{{
 " --------------------------------
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=utf-8,latin1
@@ -16,6 +16,7 @@ set display=lastline    " include as much of the last line as possible
 set wildmenu            " better command autocompletion
 set winaltkeys=no       " don't use alt keys for menus
 set foldmethod=marker
+set cryptmethod=blowfish
 
 " recommended for maximum politeness
 set tabstop=8           
@@ -51,8 +52,9 @@ endif
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
     \ | wincmd p | diffthis 
 
+" }}}
 
-" More Personalized Settings {{{1
+" More Personalized Settings {{{
 " --------------------------------
 
 " share clipboard with Windows
@@ -86,8 +88,9 @@ set laststatus=2        "always show statusline
 set showcmd             "show partial commands below statusline
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*fugitive#statusline')?fugitive#statusline():''}%*%=%-16(\ %l,%c%V\ %)%P\ of\ %L
 
+" }}}
 
-" My Mappings {{{1
+" My Mappings {{{
 " --------------------------------
 
 " best mapping ever - swap ; and :
@@ -126,12 +129,20 @@ nnoremap gnf <c-w><c-f>
 noremap qp mqGo<Esc>"qp
 noremap qd G0"qd$`q
 
+vnoremap * y/<C-R>"<CR>
 
-" Plugin-related {{{1
+" }}}
+
+" Plugin-related {{{
 " --------------------------------
 
 "for vimwiki
 filetype plugin on
+
+" make it easier to view pictures from vimwiki
+" this one took some time. would be easier to read as a function, but I was
+" having a hard time finding the equivalent of ^Rh in a function.
+autocmd FileType vimwiki noremap \wi f]h"iyi]:redir => h<CR>:echo $HOME<CR>:redir END<CR>:let @h=substitute(h,"\n","","g")<CR>:!start rundll32.exe C:\WINDOWS\System32\shimgvw.dll,ImageView_Fullscreen h\vimwiki\i<CR><CR>
 
 nmap <silent> <F10> ;NERDTreeToggle<CR>
 
@@ -141,8 +152,12 @@ noremap \b :FufBuffer<CR>
 " http://stackoverflow.com/questions/4294116/problem-with-vims-ruby-plugin
 let g:ruby_path = ':C:\ruby192\bin'
 
+" refresh fugitive status on gaining focus
+autocmd FocusGained * if !has('win32') | silent! call fugitive#reload_status() | endif
 
-" Filetype-specific commands {{{1
+" }}}
+
+" Filetype-specific commands {{{
 " --------------------------------
 
 if has("autocmd")
@@ -163,9 +178,31 @@ if has("autocmd")
    " In text files act like notepad
   autocmd BufRead *.txt set nowrap
   autocmd BufRead *.txt set go+=b
-
-  " refresh fugitive status on gaining focus
-  autocmd FocusGained * if !has('win32') | silent! call fugitive#reload_status() | endif
 endif
-" }}}2
 
+" }}}
+
+" Functions {{{
+" --------------------------------
+func! CountSearch()
+    let cs=getpos('.')
+    redir => search
+    silent :%s//&/nge
+    redir END
+    call setpos('.', cs)
+
+    if search != ''
+        let s=split(substitute(search, '\n', '', ''), ' ')
+        let search=s[0] . '/' . s[3]
+    else
+        let search='0/0'
+    endif
+
+    return @/ . ': ' . search
+endfunc 
+
+func! ViewImage()
+    normal! f]hyi]
+    
+endfunc
+" }}}
