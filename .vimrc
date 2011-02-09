@@ -17,8 +17,11 @@ set wildmenu            " better command autocompletion
 set winaltkeys=no       " don't use alt keys for menus
 set foldmethod=marker
 set cryptmethod=blowfish
+set textwidth=78
+set linebreak           " break lines at word boundaries instead of anywhere 
+                        " in the word (display only)
 
-" recommended for maximum politeness
+" Use spaces instead of tabs, indent level should be 4
 set tabstop=8           
 set softtabstop=4
 set shiftwidth=4
@@ -30,9 +33,14 @@ set smartindent
 
 " searching related
 set incsearch
-set showmatch
 set hlsearch
 set smartcase
+
+" Persistent undo
+set undodir=~/vimfiles/undodir
+set undofile
+set undolevels=1000     "maximum number of changes that can be undone
+set undoreload=10000    "maximum number lines to save for undo on a buffer reload
 
 " When editing a file, always jump to the last cursor position
 if has("autocmd") 
@@ -64,7 +72,9 @@ set clipboard=unnamed
 cd ~  
 
 set gfn=DejaVu_Sans_Mono:h10
-colo vc " I usually use desert or this
+" I switch often between these 
+" colo vc 
+colo desert
 
 " preferred window size
 set lines=25
@@ -73,6 +83,9 @@ set columns=80
 " stop these files from being scattered all over
 set backupdir=~\\vimfiles\\backup
 set directory=~\\vimfiles\\swap
+
+" stop inserting comments on 'o' or 'O'!
+set formatoptions=tcqnr
 
 " no menus
 if has("gui_running")
@@ -143,6 +156,11 @@ filetype plugin on
 " this one took some time. would be easier to read as a function, but I was
 " having a hard time finding the equivalent of ^Rh in a function.
 autocmd FileType vimwiki noremap \wi f]h"iyi]:redir => h<CR>:echo $HOME<CR>:redir END<CR>:let @h=substitute(h,"\n","","g")<CR>:!start rundll32.exe C:\WINDOWS\System32\shimgvw.dll,ImageView_Fullscreen h\vimwiki\i<CR><CR>
+
+" stop vimwiki from taking over my <c-i>
+" and remap <S-Tab> as well for consistency
+:map <Leader>wn <Plug>VimwikiNextLink
+:map <Leader>wp <Plug>VimwikiPrevLink
 
 nmap <silent> <F10> ;NERDTreeToggle<CR>
 
