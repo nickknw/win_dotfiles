@@ -17,9 +17,9 @@ set wildmenu            " better command autocompletion
 set winaltkeys=no       " don't use alt keys for menus
 set foldmethod=marker
 set cryptmethod=blowfish
-set textwidth=78
-set linebreak           " break lines at word boundaries instead of anywhere 
-                        " in the word (display only)
+set textwidth=80
+set colorcolumn=0       " keep at 0 by default, but offer a mapping later on to change it
+set linebreak           " break lines at word boundaries instead of anywhere in the word (display only)
 
 " Use spaces instead of tabs, indent level should be 4
 set tabstop=8           
@@ -144,6 +144,7 @@ noremap qd G0"qd$`q
 
 vnoremap * y/<C-R>"<CR>
 
+noremap <F8> <Esc>:call ToggleColorColumn()<CR>
 " }}}
 
 " Plugin-related {{{
@@ -159,10 +160,10 @@ autocmd FileType vimwiki noremap \wi f]h"iyi]:redir => h<CR>:echo $HOME<CR>:redi
 
 " stop vimwiki from taking over my <c-i>
 " and remap <S-Tab> as well for consistency
-:map <Leader>wn <Plug>VimwikiNextLink
-:map <Leader>wp <Plug>VimwikiPrevLink
+map <Leader>wn <Plug>VimwikiNextLink
+map <Leader>wp <Plug>VimwikiPrevLink
 
-nmap <silent> <F10> ;NERDTreeToggle<CR>
+noremap <silent> <F10> :NERDTreeToggle<CR>
 
 noremap \e :FufFileWithCurrentBufferDir **/<CR>
 noremap \b :FufBuffer<CR>
@@ -222,5 +223,14 @@ endfunc
 func! ViewImage()
     normal! f]hyi]
     
+endfunc
+
+
+func! ToggleColorColumn()
+    if(&colorcolumn==0)
+        set colorcolumn=80
+    else
+        set colorcolumn=0
+    endif
 endfunc
 " }}}
