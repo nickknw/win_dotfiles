@@ -220,12 +220,6 @@ func! CountSearch()
     return @/ . ': ' . search
 endfunc 
 
-func! ViewImage()
-    normal! f]hyi]
-    
-endfunc
-
-
 func! ToggleColorColumn()
     if(&colorcolumn==0)
         set colorcolumn=80
