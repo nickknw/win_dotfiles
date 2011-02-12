@@ -57,7 +57,7 @@ endif
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
     \ | wincmd p | diffthis 
 
 " }}}
@@ -85,7 +85,7 @@ set backupdir=~\\vimfiles\\backup
 set directory=~\\vimfiles\\swap
 
 " stop inserting comments on 'o' or 'O'!
-set formatoptions=tcqnr
+set formatoptions=cqnr
 
 " no menus
 if has("gui_running")
@@ -227,4 +227,23 @@ func! ToggleColorColumn()
         set colorcolumn=0
     endif
 endfunc
-" }}}
+
+func! VimwikiCreateSearchPage()
+    let home=expand('~')
+    let res=system('ruby "' . home . '\vimwiki_html\createSearchPage.rb"')
+endfunc
+
+"autocmd FileType vimwiki noremap \wi f]h"iyi]:redir => h<CR>:echo $HOME<CR>:redir END<CR>:let @h=substitute(h,"\n","","g")<CR>:!start rundll32.exe C:\WINDOWS\System32\shimgvw.dll,ImageView_Fullscreen h\vimwiki\i<CR><CR>
+
+
+"func! VimwikiViewImage()
+"    let home=expand('~')
+"    let res=system('start rundll32.exe C:\WINDOWS\System32\shimgvw.dll,ImageView_Fullscreen ' . home . '\vimwiki\' . i)
+"endfunc
+
+"exe "normal a".res
+func! VimwikiCopyImages()
+    let home=expand('~')
+    let res=system('xcopy "' . home . '\vimwiki\*.png" "' . home .  '\vimwiki_html\" /R/Y')
+endfunc
+" }}}\
