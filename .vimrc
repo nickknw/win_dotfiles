@@ -10,6 +10,7 @@ set nocompatible        " Use Vim defaults (much better!)
 set bs=2                " allow backspacing over everything in insert mode
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more than 50 lines of registers
 set history=50          " keep 50 lines of command line history
+set showcmd             " show partial commands below statusline
 set showmode            " If in Insert, Replace or Visual mode put a message on the last line
 set nu                  " show line numbers
 set display=lastline    " include as much of the last line as possible
@@ -20,7 +21,7 @@ set cryptmethod=blowfish
 set textwidth=80
 set colorcolumn=0       " keep at 0 by default, but offer a mapping later on to change it
 set linebreak           " break lines at word boundaries instead of anywhere in the word (display only)
-set hidden
+set hidden              " allow buffer to be changed without writing to disk
 
 " Use spaces instead of tabs, indent level should be 4
 set tabstop=8           
@@ -99,7 +100,6 @@ endif
 
 " statusline related
 set laststatus=2        "always show statusline
-set showcmd             "show partial commands below statusline
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*fugitive#statusline')?fugitive#statusline():''}%*%=%-16(\ %l,%c%V\ %)%P\ of\ %L
 
 " }}}
