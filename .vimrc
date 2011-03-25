@@ -20,6 +20,7 @@ set cryptmethod=blowfish
 set textwidth=80
 set colorcolumn=0       " keep at 0 by default, but offer a mapping later on to change it
 set linebreak           " break lines at word boundaries instead of anywhere in the word (display only)
+set hidden
 
 " Use spaces instead of tabs, indent level should be 4
 set tabstop=8           
