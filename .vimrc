@@ -1,12 +1,8 @@
 " vim: foldmethod=marker foldlevel=1 
 
-" Basic Defaults {{{
+" Get a good baseline {{{
 " --------------------------------
-if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
-   set fileencodings=utf-8,latin1
-endif
 
-set encoding=utf-8      " better default than latin1
 set nocompatible        " Use Vim defaults (much better!)
 set bs=2                " allow backspacing over everything in insert mode
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more than 50 lines of registers
@@ -23,6 +19,17 @@ set textwidth=80
 set colorcolumn=0       " keep at 0 by default, but offer a mapping later on to change it
 set linebreak           " break lines at word boundaries instead of anywhere in the word (display only)
 set hidden              " allow buffer to be changed without writing to disk
+
+" Edit in Unicode, using UTF-8
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8                     " better default than latin1
+  setglobal fileencoding=utf-8           " change default file encoding when writing new files
+  "setglobal bomb                        " use a BOM when writing new files
+  set fileencodings=ucs-bom,utf-8,latin1 " order to check for encodings when reading files
+endif
 
 " Use spaces instead of tabs, indent level should be 4
 set tabstop=8           
