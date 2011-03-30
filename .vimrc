@@ -27,7 +27,6 @@ if has("multi_byte")
   endif
   set encoding=utf-8                     " better default than latin1
   setglobal fileencoding=utf-8           " change default file encoding when writing new files
-  "setglobal bomb                        " use a BOM when writing new files
   set fileencodings=ucs-bom,utf-8,latin1 " order to check for encodings when reading files
 endif
 
@@ -108,7 +107,11 @@ endif
 
 " statusline related
 set laststatus=2        "always show statusline
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*fugitive#statusline')?fugitive#statusline():''}%*%=%-16(\ %l,%c%V\ %)%P\ of\ %L
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y
+set statusline+=\ %{exists('*fugitive#statusline')?fugitive#statusline():''} " fugitive
+set statusline+=%=
+set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"} " show encoding
+set statusline+=%-10(\ %l,%c%V\ %)%P\ of\ %L
 
 " }}}
 
