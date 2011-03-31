@@ -1,5 +1,8 @@
 " vim: foldmethod=marker foldlevel=1 
 
+" pathogen!
+call pathogen#runtime_append_all_bundles() 
+
 " Get a good baseline {{{
 " --------------------------------
 
