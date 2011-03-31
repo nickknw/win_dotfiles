@@ -105,14 +105,6 @@ if has("gui_running")
     "set nowrap
 endif
 
-" statusline related
-set laststatus=2        "always show statusline
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y
-set statusline+=\ %{exists('*fugitive#statusline')?fugitive#statusline():''} " fugitive
-set statusline+=%=
-set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"} " show encoding
-set statusline+=%-10(\ %l,%c%V\ %)%P\ of\ %L
-
 " }}}
 
 " My Mappings {{{
@@ -258,4 +250,59 @@ func! VimwikiCopyImages()
     let home=expand('~')
     let res=system('xcopy "' . home . '\vimwiki\*.png" "' . home .  '\vimwiki_html\" /R/Y')
 endfunc
-" }}}\
+" }}}
+
+
+" Statusline {{{
+" --------------------------------
+
+set laststatus=2        "always show statusline
+
+hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
+
+function! MyStatusLine(mode)
+    let statusline=""
+    if a:mode == 'Enter'
+        let statusline.="%#StatColor#"
+    endif
+    let statusline.="\(%n\)\ %<%.99f\ "
+    if a:mode == 'Enter'
+        let statusline.="%*"
+    endif
+    let statusline.="%#Modified#%m"
+    if a:mode == 'Leave'
+        let statusline.="%*%r"
+    elseif a:mode == 'Enter'
+        let statusline.="%r%*"
+    endif
+    " why would %<%.
+    let statusline .= "%h%w\ %y"
+    let statusline .= "\ %{exists('*fugitive#statusline')?fugitive#statusline():''}" "fugitive
+    let statusline .= "%="
+    let statusline .= "\ [%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\"}" "encoding
+    let statusline .= ":%{&fileformat}\ |"
+    let statusline .= "\ %(%l,%c%V%)\ |\ %P\ of\ %L]"
+    return statusline
+endfunction
+
+au WinEnter * setlocal statusline=%!MyStatusLine('Enter')
+au WinLeave * setlocal statusline=%!MyStatusLine('Leave')
+set statusline=%!MyStatusLine('Enter')
+
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi StatColor guibg=orange ctermbg=lightred
+  elseif a:mode == 'r'
+    hi StatColor guibg=#e454ba ctermbg=magenta
+  elseif a:mode == 'v'
+    hi StatColor guibg=#e454ba ctermbg=magenta
+  else
+    hi StatColor guibg=red ctermbg=red
+  endif
+endfunction 
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+
+" }}}
