@@ -269,11 +269,13 @@ func! VimwikiCopyImages()
     let home=expand('~')
     let res=system('xcopy "' . home . '\vimwiki\*.png" "' . home .  '\vimwiki_html\" /R/Y')
 endfunc
-" }}}
 
+" }}}
 
 " Statusline {{{
 " --------------------------------
+"
+" http://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 
 set laststatus=2        "always show statusline
 
@@ -295,7 +297,7 @@ function! MyStatusLine(mode)
     elseif a:mode == 'Enter'
         let statusline.="%r%*"
     endif
-    " why would %<%.
+
     let statusline .= "%h%w\ %y"
     let statusline .= "\ %{exists('*fugitive#statusline')?fugitive#statusline():''}" "fugitive
     let statusline .= "%="
@@ -323,5 +325,6 @@ endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+au InsertLeave * hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
 
 " }}}
