@@ -7,3 +7,6 @@
 [submodule "vimfiles/bundle/align"]
 	path = vimfiles/bundle/align
 	url = https://github.com/tsaleh/vim-align.git
+[submodule "vimfiles/bundle/easymotion"]
+	path = vimfiles/bundle/easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
