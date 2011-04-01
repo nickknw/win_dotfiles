@@ -10,3 +10,6 @@
 [submodule "vimfiles/bundle/easymotion"]
 	path = vimfiles/bundle/easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "vimfiles/bundle/NERDTree"]
+	path = vimfiles/bundle/NERDTree
+	url = https://github.com/vim-scripts/The-NERD-tree.git
