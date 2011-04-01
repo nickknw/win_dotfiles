@@ -4,3 +4,6 @@
 [submodule "vimfiles/bundle/mru"]
 	path = vimfiles/bundle/mru
 	url = https://github.com/vim-scripts/mru.vim.git
+[submodule "vimfiles/bundle/align"]
+	path = vimfiles/bundle/align
+	url = https://github.com/tsaleh/vim-align.git
