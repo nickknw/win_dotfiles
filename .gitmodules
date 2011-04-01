@@ -19,3 +19,6 @@
 [submodule "vimfiles/bundle/vimwiki"]
 	path = vimfiles/bundle/vimwiki
 	url = https://github.com/vim-scripts/vimwiki.git
+[submodule "vimfiles/bundle/matchit"]
+	path = vimfiles/bundle/matchit
+	url = https://github.com/vim-scripts/matchit.zip.git
