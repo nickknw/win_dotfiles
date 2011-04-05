@@ -86,7 +86,7 @@ cd ~
 set gfn=DejaVu_Sans_Mono:h10
 
 " incredibly impressive dark and light colourscheme
-set bg=light
+set bg=dark
 colorscheme solarized
 
 " preferred window size
