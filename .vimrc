@@ -90,8 +90,8 @@ set bg=light
 colorscheme solarized
 
 " preferred window size
-set lines=25
-set columns=80
+set lines=30
+set columns=100
 
 " stop these files from being scattered all over
 set backupdir=~\\vimfiles\\backup
