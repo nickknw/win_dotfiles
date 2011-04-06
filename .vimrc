@@ -86,7 +86,7 @@ cd ~
 set gfn=DejaVu_Sans_Mono:h10
 
 " incredibly impressive dark and light colourscheme
-set bg=light
+set bg=dark
 colorscheme solarized
 
 " preferred window size
@@ -196,6 +196,17 @@ command! Togbg call ToggleBackground()
 nnoremap <F7> :call ToggleBackground()<CR>
 inoremap <F7> <ESC>:call ToggleBackground()<CR>a
 vnoremap <F7> <ESC>:call ToggleBackground()<CR>
+
+" EasyMotion
+" \f and \F are the best, plus \e and \b conflict with fuf
+let g:EasyMotion_do_mapping=0
+nnoremap <silent> <Leader>f       :call EasyMotionF(0, 0)<CR>
+onoremap <silent> <Leader>f       :call EasyMotionF(0, 0)<CR>
+vnoremap <silent> <Leader>f  :<C-U>call EasyMotionF(1, 0)<CR>
+
+nnoremap <silent> <Leader>F       :call EasyMotionF(0, 1)<CR>
+onoremap <silent> <Leader>F       :call EasyMotionF(0, 1)<CR>
+vnoremap <silent> <Leader>F  :<C-U>call EasyMotionF(1, 1)<CR>
 
 " }}}
 
