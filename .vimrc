@@ -6,22 +6,23 @@ call pathogen#runtime_append_all_bundles()
 " Get a good baseline {{{
 " --------------------------------
 
-set nocompatible        " Use Vim defaults (much better!)
-set bs=2                " allow backspacing over everything in insert mode
-set viminfo='20,\"50    " read/write a .viminfo file, don't store more than 50 lines of registers
-set history=50          " keep 50 lines of command line history
-set showcmd             " show partial commands below statusline
-set showmode            " If in Insert, Replace or Visual mode put a message on the last line
-set nu                  " show line numbers
-set display=lastline    " include as much of the last line as possible
-set wildmenu            " better command autocompletion
-set winaltkeys=no       " don't use alt keys for menus
+set nocompatible          " Use Vim defaults (much better!)
+set bs=2                  " allow backspacing over everything in insert mode
+set viminfo='20,\"50      " read/write a .viminfo file, don't store more than 50 lines of registers
+set history=50            " keep 50 lines of command line history
+set showcmd               " show partial commands below statusline
+set showmode              " If in Insert, Replace or Visual mode put a message on the last line
+set nu                    " show line numbers
+set display=lastline      " include as much of the last line as possible
+set wildmenu              " better command autocompletion
+set wildmode=longest:full " definitely better than 'full' alone
+set winaltkeys=no         " don't use alt keys for menus
 set foldmethod=marker
-set cryptmethod=blowfish
+set cryptmethod=blowfish  
 set textwidth=80
-set colorcolumn=0       " keep at 0 by default, but offer a mapping later on to change it
-set linebreak           " break lines at word boundaries instead of anywhere in the word (display only)
-set hidden              " allow buffer to be changed without writing to disk
+set colorcolumn=0         " keep at 0 by default, but offer a mapping later on to change it
+set linebreak             " break lines at word boundaries instead of anywhere in the word (display only)
+set hidden                " allow buffer to be changed without writing to disk
 
 " Edit in Unicode, using UTF-8
 if has("multi_byte")
