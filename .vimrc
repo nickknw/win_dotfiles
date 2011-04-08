@@ -15,7 +15,6 @@ set showmode              " If in Insert, Replace or Visual mode put a message o
 set nu                    " show line numbers
 set display=lastline      " include as much of the last line as possible
 set wildmenu              " better command autocompletion
-set wildmode=longest:full " definitely better than 'full' alone
 set winaltkeys=no         " don't use alt keys for menus
 set foldmethod=marker
 set cryptmethod=blowfish  
@@ -183,20 +182,11 @@ let g:ruby_path = ':C:\ruby192\bin'
 " refresh fugitive status on gaining focus
 autocmd FocusGained * if !has('win32') | silent! call fugitive#reload_status() | endif
 
-" toggle solarized
-function! ToggleBackground()
-    if (g:solarized_style=="dark")
-    let g:solarized_style="light"
-    colorscheme solarized
-else
-    let g:solarized_style="dark"
-    colorscheme solarized
-endif
-endfunction
-command! Togbg call ToggleBackground()
-nnoremap <F7> :call ToggleBackground()<CR>
-inoremap <F7> <ESC>:call ToggleBackground()<CR>a
-vnoremap <F7> <ESC>:call ToggleBackground()<CR>
+" for solarized toggle
+"command! Togbg call ToggleBackground()
+"nnoremap <F7> :call ToggleBackground()<CR>
+"inoremap <F7> <ESC>:call ToggleBackground()<CR>a
+"vnoremap <F7> <ESC>:call ToggleBackground()<CR>
 
 " EasyMotion
 " \f and \F are the best, plus \e and \b conflict with fuf
