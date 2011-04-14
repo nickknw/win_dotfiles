@@ -28,3 +28,9 @@
 [submodule "vimfiles/bundle/molokai"]
 	path = vimfiles/bundle/molokai
 	url = https://github.com/vim-scripts/molokai.git
+[submodule "vimfiles/bundle/louver"]
+	path = vimfiles/bundle/louver
+	url = https://github.com/vim-scripts/louver.vim.git
+[submodule "vimfiles/bundle/visual-cpp"]
+	path = vimfiles/bundle/visual-cpp
+	url = https://github.com/vim-scripts/Visual-Cpp.git
