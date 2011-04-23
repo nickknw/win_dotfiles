@@ -173,6 +173,9 @@ map <Leader>wp <Plug>VimwikiPrevLink
 
 noremap <silent> <F10> :NERDTreeToggle<CR>
 
+" the tutorial: http://sjl.bitbucket.org/gundo.vim/
+nnoremap <F6> :GundoToggle<CR>
+
 noremap \e :FufFileWithCurrentBufferDir **/<CR>
 noremap \b :FufBuffer<CR>
 
@@ -181,12 +184,6 @@ let g:ruby_path = ':C:\ruby192\bin'
 
 " refresh fugitive status on gaining focus
 autocmd FocusGained * if !has('win32') | silent! call fugitive#reload_status() | endif
-
-" for solarized toggle
-"command! Togbg call ToggleBackground()
-"nnoremap <F7> :call ToggleBackground()<CR>
-"inoremap <F7> <ESC>:call ToggleBackground()<CR>a
-"vnoremap <F7> <ESC>:call ToggleBackground()<CR>
 
 " EasyMotion
 " \f and \F are the best, plus \e and \b conflict with fuf
