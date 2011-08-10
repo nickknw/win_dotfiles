@@ -37,3 +37,6 @@
 [submodule "vimfiles/bundle/gundo"]
 	path = vimfiles/bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
+[submodule "vimfiles\\bundle\\vim-latex"]
+	path = vimfiles/bundle/vim-latex
+	url = https://github.com/jcf/vim-latex.git
