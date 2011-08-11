@@ -160,6 +160,8 @@ noremap <F8> <Esc>:call ToggleColorColumn()<CR>
 
 "for vimwiki
 filetype plugin on
+set shellslash
+let g:tex_flavor='latex'
 
 " make it easier to view pictures from vimwiki
 " this one took some time. would be easier to read as a function, but I was
