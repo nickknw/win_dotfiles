@@ -169,6 +169,7 @@ let g:vimwiki_list=[
 \    {'path':'~/DropBox/Nick/wiki/genologics/', 'path_html':'~/DropBox/Nick/wiki/genologics/html'}
 \ ]
 let g:vimwiki_camel_case=0
+let g:vimwiki_hl_headers=1
 
 " make it easier to view pictures from vimwiki
 " this one took some time. would be easier to read as a function, but I was
