@@ -87,7 +87,7 @@ set gfn=DejaVu_Sans_Mono:h10
 
 " incredibly impressive dark and light colourscheme
 set bg=dark
-colorscheme solarized
+colorscheme slate
 
 " preferred window size
 set lines=30
@@ -162,6 +162,14 @@ noremap <F8> <Esc>:call ToggleColorColumn()<CR>
 filetype plugin on
 set shellslash
 let g:tex_flavor='latex'
+let g:vimwiki_list=[ 
+\    {}, 
+\    {'path':'~/DropBox/Nick/online-classes/ai-class/', 'path_html':'~/DropBox/Nick/online-classes/ai-class/html'}, 
+\    {'path':'~/DropBox/Nick/online-classes/ml-class/', 'path_html':'~/DropBox/Nick/online-classes/ml-class/html'}, 
+\    {'path':'~/DropBox/Nick/online-classes/linear-algebra/', 'path_html':'~/DropBox/Nick/online-classes/linear-algebra/html'},
+\    {'path':'~/DropBox/Nick/wiki/genologics/', 'path_html':'~/DropBox/Nick/wiki/genologics/html'}
+\ ]
+let g:vimwiki_camel_case=0
 
 " make it easier to view pictures from vimwiki
 " this one took some time. would be easier to read as a function, but I was
