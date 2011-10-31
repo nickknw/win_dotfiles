@@ -91,6 +91,7 @@ colorscheme Tomorrow-Night
 " preferred window size
 set lines=30
 set columns=100
+"set shellslash
 
 " stop these files from being scattered all over
 set backupdir=~\\vimfiles\\backup
@@ -159,22 +160,21 @@ noremap <F8> <Esc>:call ToggleColorColumn()<CR>
 
 "for vimwiki
 filetype plugin on
-set shellslash
 let g:tex_flavor='latex'
 let g:vimwiki_list=[ 
 \    {}, 
-\    {'path':'~/DropBox/Nick/online-classes/ai-class/', 'path_html':'~/DropBox/Nick/online-classes/ai-class/html'}, 
-\    {'path':'~/DropBox/Nick/online-classes/ml-class/', 'path_html':'~/DropBox/Nick/online-classes/ml-class/html'}, 
-\    {'path':'~/DropBox/Nick/online-classes/linear-algebra/', 'path_html':'~/DropBox/Nick/online-classes/linear-algebra/html'},
+\    {'path':'~/DropBox/Nick/online-classes', 'path_html':'~/DropBox/Nick/online-classes/html'}, 
 \    {'path':'~/DropBox/Nick/wiki/genologics/', 'path_html':'~/DropBox/Nick/wiki/genologics/html'}
 \ ]
 let g:vimwiki_camel_case=0
 let g:vimwiki_hl_headers=1
+map <Leader>] viws]lviws]
 
 " make it easier to view pictures from vimwiki
+" pretty hacky - also only works if
 " this one took some time. would be easier to read as a function, but I was
 " having a hard time finding the equivalent of ^Rh in a function.
-autocmd FileType vimwiki noremap \wi f]h"iyi]:redir => h<CR>:echo $HOME<CR>:redir END<CR>:let @h=substitute(h,"\n","","g")<CR>:!start rundll32.exe C:\WINDOWS\System32\shimgvw.dll,ImageView_Fullscreen h\vimwiki\i<CR><CR>
+autocmd FileType vimwiki noremap \wi :cd %:p:h<CR>f]h"iyi]:redir => h<CR>:cd<CR>:redir END<CR>:let @h=substitute(h,"\n","","g")<CR>:!start rundll32.exe C:\WINDOWS\System32\shimgvw.dll,ImageView_Fullscreen h\i<CR><CR>
 
 " stop vimwiki from taking over my <c-i>
 " and remap <S-Tab> as well for consistency
